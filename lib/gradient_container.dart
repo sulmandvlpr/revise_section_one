@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class GradientContainer extends StatelessWidget {
+  //cosntrucutor function & const keyword
+  //this super is represent parent class which is stateless
   const GradientContainer({super.key});
+//build calls automatically by flutter when we initilze GradinetContainer object
 
   @override
   Widget build(context) {
