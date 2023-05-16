@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class StyledText extends StatelessWidget {
-  const StyledText({super.key});
+// we need to except the text here
+  const StyledText(this.ivtext, {super.key});
+//to use this text in build method or any other method inside this class
+//we need to have class variable
+  final String ivtext;
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      'Always print me',
-      style: TextStyle(fontSize: 28),
+    return Text(
+      ivtext,
+      style: const TextStyle(fontSize: 28),
     );
   }
 }
