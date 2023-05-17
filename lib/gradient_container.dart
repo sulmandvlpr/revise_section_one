@@ -33,6 +33,8 @@ class GradientContainer extends StatelessWidget {
               'assets/images/dice-1.png',
               width: 200,
             ),
+            //Sized box cut off widget which is out of its bound
+            //while the other widget for sizing is don't cut off extra content
             const SizedBox(height: 20),
             TextButton(
                 onPressed: rollDice,
