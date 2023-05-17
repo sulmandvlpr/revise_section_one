@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:revise_section_one/styled_text.dart';
 
 var startAlignment = Alignment.topLeft;
 var endAlignment = Alignment.bottomRight;
-// we want to use gradinet color dynamic so we modify the color value later
-// so we need to extract out from widget tree and use as dynamic value to modify later
 
 class GradientContainer extends StatelessWidget {
   const GradientContainer(this.colors, {super.key});
@@ -21,8 +18,15 @@ class GradientContainer extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: const Center(
-        child: StyledText('some text dispay'),
+      child: Center(
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/dice-1.png',
+              width: 200,
+            ),
+          ],
+        ),
       ),
     );
   }
