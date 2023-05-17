@@ -3,17 +3,22 @@ import 'package:flutter/material.dart';
 var startAlignment = Alignment.topLeft;
 var endAlignment = Alignment.bottomRight;
 
-//fun are also pass as values in flutter
-// we define func on top so we can easy change thing without deep dive in to widget tree
-// later when working with big project
+// now we planing what happens when we clik the botton
+// button value is change able we need variabls
+// and the const GradinetContainer is no more const because It Can Change Internelly
+
 class GradientContainer extends StatelessWidget {
-  const GradientContainer(this.colors, {super.key});
+  GradientContainer(this.colors, {super.key});
 
   final List<Color> colors;
 
 //define func after construction function and instace variables
 
-  void rollDice() {}
+  var activeDiceImage = 'assets/images/dice-1.png';
+
+  void rollDice() {
+    activeDiceImage = 'assets/images/dice-4.png';
+  }
 
   @override
   Widget build(context) {
@@ -30,7 +35,7 @@ class GradientContainer extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              'assets/images/dice-1.png',
+              activeDiceImage,
               width: 200,
             ),
             //Sized box cut off widget which is out of its bound
