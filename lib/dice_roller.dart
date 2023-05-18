@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 // flutter require 2 differnt class detach from each other
@@ -16,8 +18,10 @@ class _DiceRollerState extends State<DiceRoller> {
   var activeDiceImage = 'assets/images/dice-1.png';
 
   void rollDice() {
+    
+    var diceRoll = Random().nextInt(6);
     setState(() {
-      activeDiceImage = 'assets/images/dice-4.png';
+      activeDiceImage = 'assets/images/dice-$diceRoll.png';
     });
   }
 // we need a way (method) to re-execute this build method when we change the value of variable and render(display) the updated values
