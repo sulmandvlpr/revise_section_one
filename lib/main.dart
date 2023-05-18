@@ -4,7 +4,7 @@ import 'package:revise_section_one/gradient_container.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(
         body: GradientContainer([
           Color.fromARGB(255, 33, 5, 109),
