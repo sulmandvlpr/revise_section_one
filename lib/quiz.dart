@@ -16,7 +16,16 @@ class _QuizState extends State<Quiz> {
   // we can also Store Widget in Variable
   // we can set var to Widget to use any Widget type
   //it will accept fun swtichScren as arg
-  Widget activeScreen = const StartScreen(switchScreen);
+  //now activeScreen is initilly null
+  Widget? activeScreen;
+
+  //for extra intilization work we need initState() method
+  //it will initlize the state properties before initlizing other things so it can store in momory
+  @override
+  void initState() {
+    super.initState();
+    activeScreen = StartScreen(switchScreen);
+  }
 
   void switchScreen() {
     setState(() {
