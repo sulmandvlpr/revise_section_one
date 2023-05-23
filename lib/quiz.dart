@@ -14,7 +14,9 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   // we can also Store Widget in Variable
-  Widget activeScreen = const StartScreen();
+  // we can set var to Widget to use any Widget type
+  //it will accept fun swtichScren as arg
+  Widget activeScreen = const StartScreen(switchScreen);
 
   void switchScreen() {
     setState(() {
@@ -37,7 +39,7 @@ class _QuizState extends State<Quiz> {
                 end: Alignment.bottomRight,
               ),
             ),
-            child: const StartScreen()),
+            child: activeScreen),
       ),
     );
   }
