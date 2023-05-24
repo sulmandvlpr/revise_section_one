@@ -13,23 +13,12 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // we can also Store Widget in Variable
-  // we can set var to Widget to use any Widget type
-  //it will accept fun swtichScren as arg
-  //now activeScreen is initilly null
-  Widget? activeScreen;
-
-  //for extra intilization work we need initState() method
-  //it will initlize the state properties before initlizing other things so it can store in momory
-  @override
-  void initState() {
-    super.initState();
-    activeScreen = StartScreen(switchScreen);
-  }
+  //we can store some identifier for screen name as string
+  var activeScreen = 'start-screen'; // it could be number also e.g 1,3
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
     });
   }
 
@@ -48,7 +37,12 @@ class _QuizState extends State<Quiz> {
                 end: Alignment.bottomRight,
               ),
             ),
-            child: activeScreen),
+            // == is comparision operator
+            // value after ? expecte if the option is true
+            // value after : execute if option is false
+            child: activeScreen == 'start-screen'
+                ? StartScreen(switchScreen)
+                : const QuestionsScreen()),
       ),
     );
   }
