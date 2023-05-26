@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:revise_section_one/answers_button.dart';
+import 'package:revise_section_one/data/questions.dart';
 
+//to display data from question List imporat and Access Elements of List by listName[elemntnum]
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
 
@@ -13,18 +15,24 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionsScreen> {
   @override
   Widget build(context) {
-    //colum take full height but the width left behind so to take full width also
-    //we need double.infinity of width property with sizedbox widget
+    //access questions List by import
+    //store value of List in variable
+    final currentQuestion = questions[0];
+
     return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('the question text'),
+          Text(
+            //access the Property of questions List class by classname.prperty type
+            currentQuestion.text,
+            style: const TextStyle(color: Colors.white),
+          ),
           const SizedBox(height: 20),
-          AnswerButton(answerText: 'Answer 1', onTap: () {}),
-          AnswerButton(answerText: 'Answer 2', onTap: () {}),
-          AnswerButton(answerText: 'Answer 3', onTap: () {}),
+          AnswerButton(answerText: currentQuestion.answers[0], onTap: () {}),
+          AnswerButton(answerText: currentQuestion.answers[1], onTap: () {}),
+          AnswerButton(answerText: currentQuestion.answers[2], onTap: () {}),
         ],
       ),
     );
