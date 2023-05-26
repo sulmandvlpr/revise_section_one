@@ -13,11 +13,20 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionsScreen> {
+//we start with 1st qustestion in list so
+  var currentListIndex = 0;
+// now we need a method which shold change currntListIndex to 1
+// this should be update the build ui so we use setStete method
+  answerQuestion() {
+    setState(() {
+      currentListIndex++;
+    });
+  }
+
   @override
   Widget build(context) {
-    //access questions List by import
-    //store value of List in variable
-    final currentQuestion = questions[0];
+    //add this list elment variable here
+    final currentQuestion = questions[currentListIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -42,7 +51,7 @@ class _QuestionScreenState extends State<QuestionsScreen> {
             //... spereding will take all value from list and pull them out from list and save them in comma seprated values
             //
             ...currentQuestion.getShuffledAnswer().map((answer) {
-              return AnswerButton(onTap: () {}, answerText: answer);
+              return AnswerButton(onTap: answerQuestion, answerText: answer);
             }),
           ],
         ),
