@@ -30,9 +30,15 @@ class _QuestionScreenState extends State<QuestionsScreen> {
             style: const TextStyle(color: Colors.white),
           ),
           const SizedBox(height: 20),
-          AnswerButton(answerText: currentQuestion.answers[0], onTap: () {}),
-          AnswerButton(answerText: currentQuestion.answers[1], onTap: () {}),
-          AnswerButton(answerText: currentQuestion.answers[2], onTap: () {}),
+          // ...currentQuestion.answers.map((answers) => AnswerButton(onTap: (){}, answerText: answers))
+          //set button text dynamically based on answers list
+          //so we need to convert answers list to widget answer list
+          //we convert list to widget list by applying .map((list element){}) method to list  which returns new Widget List
+          //.map return New Widget list but column have childer list [] so we use ...
+          //... spereding will take all value from list and pull them out from list and save them in comma seprated values
+          ...currentQuestion.answers.map((answer) {
+            return AnswerButton(onTap: () {}, answerText: answer);
+          }),
         ],
       ),
     );
