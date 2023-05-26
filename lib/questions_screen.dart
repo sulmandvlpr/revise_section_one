@@ -40,7 +40,8 @@ class _QuestionScreenState extends State<QuestionsScreen> {
             //we convert list to widget list by applying .map((list element){}) method to list  which returns new Widget List
             //.map return New Widget list but column have childer list [] so we use ...
             //... spereding will take all value from list and pull them out from list and save them in comma seprated values
-            ...currentQuestion.answers.map((answer) {
+            //
+            ...currentQuestion.getShuffledAnswer().map((answer) {
               return AnswerButton(onTap: () {}, answerText: answer);
             }),
           ],
