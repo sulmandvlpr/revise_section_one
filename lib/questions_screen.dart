@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:revise_section_one/answers_button.dart';
 import 'package:revise_section_one/data/questions.dart';
 
-//to display data from question List imporat and Access Elements of List by listName[elemntnum]
+//display diffrent screen when answers are done
+//save the selcted answers
+//how do we do that?
+//where do we do that?
+//what thing are avaible for us
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen({super.key, required this.onSelectedAnswer});
+
+  final void Function(String answer) onSelectedAnswer;
 
   @override
   State<QuestionsScreen> createState() {
@@ -17,7 +23,9 @@ class _QuestionScreenState extends State<QuestionsScreen> {
   var currentListIndex = 0;
 // now we need a method which shold change currntListIndex to 1
 // this should be update the build ui so we use setStete method
-  answerQuestion() {
+  void answerQuestion(String answer) {
+    widget.onSelectedAnswer(answer);
+
     setState(() {
       currentListIndex++;
     });
@@ -51,7 +59,11 @@ class _QuestionScreenState extends State<QuestionsScreen> {
             //... spereding will take all value from list and pull them out from list and save them in comma seprated values
             //
             ...currentQuestion.getShuffledAnswer().map((answer) {
-              return AnswerButton(onTap: answerQuestion, answerText: answer);
+              return AnswerButton(
+                  onTap: () {
+                    answerQuestion(answer);
+                  },
+                  answerText: answer);
             }),
           ],
         ),
