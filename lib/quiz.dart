@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart ';
+import 'package:revise_section_one/data/questions.dart';
 import 'package:revise_section_one/questions_screen.dart';
 
 import 'package:revise_section_one/start_screen.dart';
@@ -23,14 +24,24 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
 //we have  variable here to store the current slected answer
 //store list of answer for all question  q1 ans , q2 ans
-  final List<String> sletectedAnswer = [];
+  List<String> sletectedAnswer = [];
 
 //now we need method to add answers  to list
 //seleted answer will added to this selctedAnswer List
 //now when we click on answer button this method executed and save selected answer
 //button  is prsent in question_screen  so we forward selecteAns method via constructor of questionScreen(sletedAnswer)
-  void selectedAnswer(String answer) {
+  void chosenAnswer(String answer) {
+    //add the seleceAnswer to list of answers
     sletectedAnswer.add(answer);
+//reset seletedAnswer to empty list when done
+    sletectedAnswer = [];
+//once we slected all answer we check if all the answer are chosen then we go to start-screen
+    if (sletectedAnswer.length == questions.length) {
+//then reset to start screen
+      setState(() {
+        activeScreen = 'start-screen';
+      });
+    }
   }
 
   //we can store some identifier for screen name as string
@@ -62,7 +73,7 @@ class _QuizState extends State<Quiz> {
           // value after : execute if option is false
           child: activeScreen == 'start-screen'
               ? StartScreen(switchScreen)
-              : QuestionsScreen(onSelectedAnswer: selectedAnswer),
+              : QuestionsScreen(onSelectedAnswer: chosenAnswer),
         ),
       ),
     );
