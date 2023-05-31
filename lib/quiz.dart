@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart ';
 import 'package:revise_section_one/data/questions.dart';
 import 'package:revise_section_one/questions_screen.dart';
-
+import 'package:revise_section_one/results_screen.dart';
 import 'package:revise_section_one/start_screen.dart';
 
 //📝 to use SatetfulWdiget class porperties in State class use widget.
@@ -23,28 +23,10 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
 //we have  variable here to store the current slected answer
-//store list of answer for all question  q1 ans , q2 ans
+// //store list of answer for all question  q1 ans , q2 ans
   List<String> sletectedAnswer = [];
 
-//now we need method to add answers  to list
-//seleted answer will added to this selctedAnswer List
-//now when we click on answer button this method executed and save selected answer
-//button  is prsent in question_screen  so we forward selecteAns method via constructor of questionScreen(sletedAnswer)
-  void chosenAnswer(String answer) {
-    //add the seleceAnswer to list of answers
-    sletectedAnswer.add(answer);
-//reset seletedAnswer to empty list when done
-    sletectedAnswer = [];
-//once we slected all answer we check if all the answer are chosen then we go to start-screen
-    if (sletectedAnswer.length == questions.length) {
-//then reset to start screen
-      setState(() {
-        activeScreen = 'start-screen';
-      });
-    }
-  }
-
-  //we can store some identifier for screen name as string
+//we can store some identifier for screen name as string
   var activeScreen = 'start-screen'; // it could be number also e.g 1,3
 
   void switchScreen() {
@@ -53,8 +35,39 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+//now we need method to add answers  to list
+//seleted answer will added to this selctedAnswer List
+//now when we click on answer button this method executed and save selected answer
+//button  is prsent in question_screen  so we forward selecteAns method via constructor of questionScreen(sletedAnswer)
+  void chosenAnswer(String answer) {
+    //add the seleceAnswer to list of answers
+    sletectedAnswer.add(answer);
+
+//once we slected all answer we check if all the answer are chosen then we go to start-screen
+    if (sletectedAnswer.length == questions.length) {
+//then show result screen
+      setState(() {
+//reset seletedAnswer to empty list when done
+        sletectedAnswer = [];
+        activeScreen = 'result-screen';
+      });
+    }
+  }
+
   @override
   Widget build(context) {
+    Widget screenWidget = StartScreen(switchScreen);
+
+    if (activeScreen == 'question-screen') {
+      screenWidget = QuestionsScreen(onSelectedAnswer: chosenAnswer);
+    }
+
+    if (activeScreen == 'result-screen') {
+      screenWidget = ResultsScreen(
+        chosenAnswer: sletectedAnswer,
+      );
+    }
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
