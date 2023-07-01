@@ -1,75 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:revise_section_one/widgets/expenses.dart';
-// import 'package:flutter/services.dart';
 
-//Theming apply on MaterialApp
-//decalare global Color Scheme  with single Color value
-var kColorScheme =
-    ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 229, 81, 255));
+import 'package:revise_section_one/ui_updates_demo.dart';
 
-var kDarkColorScheme =
-    ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 200, 168, 252));
 void main() {
-//   //this is reqire to make sure that locking the orientation
-//   WidgetsFlutterBinding.ensureInitialized();
-// SystemChrome.setPreferredOrientations([
-//   DeviceOrientation.portraitUp
-// ]).then((fn) {
+  runApp(const App());
+}
 
-  runApp(
-    MaterialApp(
-      //theming
-      //copyWith() method provide some defualt styling on things like widgets,scaffold
-      //save our time to theme every thing from scratch
-      //allow us to set default colors like primary ,secondary color , button colors
-      theme: ThemeData().copyWith(
-          //useMaterial3 apply some latest style like round the button
-          useMaterial3: true,
-          colorScheme: kColorScheme,
-          //appbar color
-          appBarTheme: const AppBarTheme().copyWith(
-            backgroundColor: kColorScheme.onPrimaryContainer,
-            foregroundColor: kColorScheme.primaryContainer,
-          ),
-          //card color
-          cardTheme: const CardTheme().copyWith(
-            color: kColorScheme.secondaryContainer,
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          ),
-          //elevated button color
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: kColorScheme.primaryContainer,
-              foregroundColor: kColorScheme.onPrimaryContainer,
-            ),
-          ),
-          //text color
-          textTheme: ThemeData().textTheme.copyWith(
-                titleLarge: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: kColorScheme.onSecondaryContainer,
-                    fontSize: 14),
-              )),
-      darkTheme: ThemeData.dark().copyWith(
-        brightness: Brightness.dark,
-        useMaterial3: true,
-        colorScheme: kDarkColorScheme,
+class App extends StatelessWidget {
+  const App({super.key});
 
-        //dark card theme
-        cardTheme: const CardTheme().copyWith(
-          color: kDarkColorScheme.secondaryContainer,
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Internals'),
         ),
-        //dark elevated button color
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: kDarkColorScheme.primaryContainer,
-            foregroundColor: kDarkColorScheme.onPrimaryContainer,
-          ),
-        ),
+        body: const UIUpdatesDemo(),
       ),
-
-      home: const Expenses(),
-    ),
-  );
+    );
+  }
 }
