@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:revise_section_one/screens/tabs.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:revise_section_one/provider/meals_provider.dart';
+import 'package:revise_section_one/widgets/grocery_list.dart';
 
 //theme vairable to store theme
 
@@ -18,8 +15,12 @@ final theme = ThemeData(
   textTheme: GoogleFonts.latoTextTheme(),
 );
 
+// void main() {
+//   runApp(const ProviderScope(child: App()));
+// }
+
 void main() {
-  runApp(const ProviderScope(child: App()));
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
@@ -31,7 +32,7 @@ class App extends StatelessWidget {
       theme: theme,
       //remove const later
       //main screen Widget
-      home: const TabsScreen(),
+      home: const GroceryList(),
     );
   }
 }
