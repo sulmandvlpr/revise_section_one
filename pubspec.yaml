@@ -41,6 +41,12 @@ dependencies:
   google_fonts: ^4.0.4
   transparent_image: ^2.0.1
   http: ^0.13.5
+  image_picker: ^0.8.7+1
+  location: ^4.2.0
+  google_maps_flutter: ^2.3.0
+  path_provider: ^2.1.0
+  path: ^1.8.2
+  sqflite: ^2.2.8+4
 
 dev_dependencies:
   flutter_test:

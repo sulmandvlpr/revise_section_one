@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:revise_section_one/widgets/grocery_list.dart';
+import 'package:revise_section_one/screens/places.dart';
 
 //theme vairable to store theme
 
@@ -10,9 +10,13 @@ final theme = ThemeData(
   useMaterial3: true,
   //set defulat color
   colorScheme:
-      ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 131, 57, 0)),
+      ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 70, 188, 88)),
   //set defulat font family
-  textTheme: GoogleFonts.latoTextTheme(),
+  textTheme: GoogleFonts.ubuntuCondensedTextTheme().copyWith(
+    titleSmall: GoogleFonts.ubuntuCondensed(fontWeight: FontWeight.bold),
+    titleMedium: GoogleFonts.ubuntuCondensed(fontWeight: FontWeight.bold),
+    titleLarge: GoogleFonts.ubuntuCondensed(fontWeight: FontWeight.bold),
+  ),
 );
 
 // void main() {
@@ -20,7 +24,15 @@ final theme = ThemeData(
 // }
 
 void main() {
-  runApp(const App());
+//ProviderScope(App)
+//Now we use this provider User Places  on alot of classes we we make this abailble to Main Class
+//with Main class it will automatically availabe to alot of places in app
+//User ProvierScoper in Main runApp to availble provider on all app
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -32,7 +44,7 @@ class App extends StatelessWidget {
       theme: theme,
       //remove const later
       //main screen Widget
-      home: const GroceryList(),
+      home: PlacesScreen(),
     );
   }
 }
